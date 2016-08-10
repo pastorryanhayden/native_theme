@@ -1,0 +1,85 @@
+
+<body>
+<!--[if lt IE 7]>
+	<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+<div class="body"> 
+  <!-- Start Site Header -->
+  <header class="site-header">
+    <div class="topbar">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6 col-xs-8">
+            <h1 class="logo"> <a href="{{site.url}}/"><img src="{{site.url}}assets/images/logo2.png" alt="Logo"></a> </h1>
+          </div>
+          <div class="col-md-8 col-sm-6 col-xs-4">
+            <ul class="top-navigation hidden-sm hidden-xs">
+              <li><a href="{{site.url}}welcome.html">Plan your visit</a></li>
+              <li><a href="#service">Service Schedule</a></li>
+              <li><a href="{{site.url}}donate.html">Give Online</a></li>
+            </ul>
+            <a href="#" class="visible-sm visible-xs menu-toggle"><i class="fa fa-bars"></i></a> </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-menu-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <nav class="navigation">
+              <ul class="sf-menu">
+                <li><a href="{{site.url}}index.html">Home</a></li>
+                <li class="megamenu"><a href="#">About Us</a>
+
+                            <ul class="dropdown">
+                              <li>
+                                <div class="megamenu-container container">
+                                  <div class="row">
+                                    <div class="col-md-4 hidden-sm hidden-xs"> <span class="megamenu-sub-title"><i class="fa fa-bell"></i> Welcome Video</span>
+
+                                    </div>
+                                    <div class="col-md-4"> <span class="megamenu-sub-title"><i class="fa fa-pagelines"></i> Essential Information</span>
+                                      <ul class="sub-menu">
+                                        {% for item in site.data.abouts %}
+                                     <li><a href="{{ item.title | datapage_url: 'about-us' | prepend: site.baseurl | prepend: site.url }}">{{item.title}}</a></li>
+                                     {% endfor %}
+                                      </ul>
+                                    </div>
+                                    <div class="col-md-3"> <span class="megamenu-sub-title"><i class="fa fa-clock-o"></i> Service Schedule</span>
+                                      <ul class="sub-menu">
+                                        <li><a href="#">Sunday School</a> <span class="meta-data">Sunday | 10:00 AM</span> </li>
+                                        <li><a href="#">Morning Service</a> <span class="meta-data">Sunday | 11:00 AM</span> </li>
+                                        <li><a href="#">Sunday Evening</a> <span class="meta-data">Sunday | 06:00 PM</span> </li>
+                                        <li><a href="#">Wednesday Night</a> <span class="meta-data">Wednesday | 06:00 PM</span> </li>
+
+                                      </ul>
+                                    </div>
+                                    </div>
+                                </div>
+                              </li>
+                            </ul>
+
+                </li>
+                <li><a href="about.html">Ministries</a>
+                  <ul class="dropdown">
+                    {% for item in site.data.ministries %}
+                    <li><a href="{{ item.name | datapage_url: 'ministries' | prepend: site.baseurl | prepend: site.url }}">{{item.name}}</a></li>
+                    {% endfor %}
+                </ul></li>
+                <li><a href="{{site.url}}calendar-list.html">Calendar</a></li>
+                <li><a href="#">Media</a>
+                  <ul class="dropdown">
+                    <li><a href="{{site.url}}blog-list.html">Blog</a></li>
+                    <li><a href="{{site.url}}sermons.html">Sermons</a></li>
+                    <li><a href="{{site.url}}gallery.html">Gallery</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- End Site Header --> 
