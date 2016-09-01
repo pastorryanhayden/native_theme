@@ -19,9 +19,19 @@ layout: default
         <div class="row"> 
           <!-- Start Featured Blocks -->
           <div class="featured-blocks clearfix">
-            <div class="col-md-4 col-sm-4 featured-block"> <a href="{{site.url}}our-staff.html" class="img-thumbnail"> <img src="{{site.url}}assets/images/ourpastor.png" alt="staff"> <strong>Our Pastor</strong> <span class="more">read more</span> </a> </div>
-            <div class="col-md-4 col-sm-4 featured-block"> <a href="{{site.url}}about.html" class="img-thumbnail"> <img src="{{site.url}}assets/images/newhere.png" alt="staff"> <strong>New Here</strong> <span class="more">read more</span> </a> </div>
-            <div class="col-md-4 col-sm-4 featured-block"> <a href="{{site.url}}sermons.html" class="img-thumbnail"> <img src="{{site.url}}assets/images/thegospel.png" alt="staff"> <strong>Sermons Archive</strong> <span class="more">read more</span> </a> </div>
+            <div class="col-md-4 col-sm-4 featured-block"> <a href="{{site.data.home[0].Link_1_URL}}" class="img-thumbnail">{% for img in site.data.home[0].LInk_1_Image %}
+              <img src="{{img.url}}" alt="staff">
+              {% endfor %}
+               <strong>{{site.data.home[0].Link_1_Text}}</strong> <span class="more">read more</span> </a> </div>
+               <div class="col-md-4 col-sm-4 featured-block"> <a href="{{site.data.home[0].Link_2_URL}}" class="img-thumbnail">{% for img in site.data.home[0].LInk_2_Image %}
+              <img src="{{img.url}}" alt="staff">
+              {% endfor %}
+               <strong>{{site.data.home[0].Link_2_Text}}</strong> <span class="more">read more</span> </a> </div>
+               <div class="col-md-4 col-sm-4 featured-block"> <a href="{{site.data.home[0].Link_3_URL}}" class="img-thumbnail">{% for img in site.data.home[0].LInk_3_Image %}
+              <img src="{{img.url}}" alt="staff">
+              {% endfor %}
+               <strong>{{site.data.home[0].Link_3_Text}}</strong> <span class="more">read more</span> </a> </div>
+           
           </div>
           <!-- End Featured Blocks --> 
         </div>
