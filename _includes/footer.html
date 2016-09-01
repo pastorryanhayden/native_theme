@@ -5,9 +5,22 @@
         <!-- Start Footer Widgets -->
         <div class="col-md-4 col-sm-4 widget footer-widget">
           <h4 class="footer-widget-title">About our Church</h4>
-          <img src="{{site.url}}assets/images/logo2.png" alt="Logo">
+          {% if  {{site.data.info[0].Church_Logo %}
+          {% for img in site.data.info[0].Church_Logo %}
+          <img src="{{img.url}}" alt="Logo">
+          {% endfor %}
+          {% else %}
+          <h5>{{site.data.info[0].Church_Name}}</h5>
+          {% endif %}
           <div class="spacer-20"></div>
-          <p>Blessed Hope Baptist Church is an independent Baptist church located in Mt. Vernon, IL.  It was founded in 2012.</p>
+          <p>{{site.data.home[0].Intro_Text}}</p>
+        <div class="address">
+            <p><i class="fa fa-map-marker"></i>  {{site.data.location[0].Street_Address}} {{site.data.location[0].Street_Address2}} {{site.data.location[0].City }}, {{site.data.location[0].State }} {{site.data.location[0].Zip }} <br>
+                <i class="fa fa-phone"></i>  {{site.data.contact[0].Phone }} <br>
+                <i class="fa fa-envelope"></i>  {{site.data.contact[0].Church_email }} <br>
+                <a href="http://airtable.com" title="sign in" class="footer-sign-in" target="blank"><i class="fa fa-cog"></i> Manager Sign In</a>
+            </p>
+        </div><!--/address-->
         </div>
         <div class="col-md-4 col-sm-4 widget footer-widget">
           <h4 class="footer-widget-title">Quick Links</h4>
@@ -22,10 +35,9 @@
         <div class="col-md-4 col-sm-4 widget footer-widget">
           <h4 class="footer-widget-title" id="service" >Service Schedule</h4>
           <ul class="sub-menu">
-            <li><a href="#">Sunday School</a> <span class="meta-data">Sunday | 109:00 AM</span> </li>
-            <li><a href="#">Morning Service</a> <span class="meta-data">Sunday | 11:00 AM</span> </li>
-            <li><a href="#">Sunday Evening</a> <span class="meta-data">Sunday | 06:00 PM</span> </li>
-            <li><a href="#">Wednesday Night</a> <span class="meta-data">Wednesday | 06:00 PM</span> </li>
+            {% for item in site.data.service_schedule %}
+            <li><a href="#">{{item.Service_name}}</a> <span class="meta-data">{{item.Service_time}}</span> </li>
+            {% endfor %}
 
           </ul>
                   </div>
@@ -36,10 +48,11 @@
     <div class="container">
       <div class="row">
         <div class="copyrights-col-left col-md-6 col-sm-6">
-          <p>&copy; 2015 Blessed Hope Baptist Church. All Rights Reserved</p> <a href="http://www.airtable.com" target="blank">Admin Log In </a>
+          <p>&copy; 2015 {{site.data.info[0].Church_Name}}. All Rights Reserved</p> <a href="http://www.airtable.com" target="blank">Admin Log In </a>
         </div>
         <div class="copyrights-col-right col-md-6 col-sm-6">
-          <div class="social-icons"> <a href="https://www.facebook.com/pages/Blessed-Hope-Baptist-Church-in-Mount-Vernon-IL/591991170863042?pnref=lhc&rf=168948383299488" target="_blank"><i class="fa fa-facebook"></i></a> <a href="http://www.pinterest.com/" target="_blank"><i class="fa fa-youtube"></i></a> <a href="#"><i class="fa fa-rss"></i></a> </div>
+          <div class="social-icons"> {% if site.data.contact[0].Facebook %}
+           <a href="{{site.data.contact[0].Facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>{% endif %} {% if site.data.contact[0].Twitter %}<a href="{{site.data.contact[0].Twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>{% endif %} {% if site.data.contact[0].Youtube %}<a href="#"><i class="fa fa-youtube"></i></a>{% endif %} </div>
         </div>
       </div>
     </div>

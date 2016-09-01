@@ -37,14 +37,17 @@ layout: default
             </header>
             <div class="post-content">
               <div id="gmap">
-                <iframe src="https://maps.google.com/?ie=UTF8&amp;ll=38.3066215,-88.92424&amp;spn=0.043846,0.077162&amp;t=m&amp;z=14&amp;output=embed"></iframe>
+                {{ site.data.location[0].Google_Maps_Embed_Code | raw }}
               </div>
               <div class="row">
-                  <p>Blessed Hope Baptist Church is physically located at 910 South 26th Street in Mount Vernon IL, directly across from the tennis courts and basketball courts on the east side of the City Park.</p>
-                <p>Our mailing address is not the same as our physciall address. Our mailing address is:</p>
-                <p>Blessed Hope Baptist Church <br>
-                P.O. Box 1684 <br>
-                Mt.Vernon IL. 62864</p>
+                  {% if  site.data.contact_page[0].Content %}
+                  {{ site.data.contact_page[0].Content | markdownify }}
+                  {% endif %}
+                   <div class="address">
+            <p><i class="fa fa-map-marker"></i>  {{site.data.location[0].Street_Address}} {{site.data.location[0].Street_Address2}} {{site.data.location[0].City }}, {{site.data.location[0].State }} {{site.data.location[0].Zip }} <br>
+                <i class="fa fa-phone"></i>  {{site.data.contact[0].Phone }} <br>
+                <i class="fa fa-envelope"></i>  {{site.data.contact[0].Church_email }} 
+                <hr>
               </div>
               <div class="row">
                 <form method="post" id="contactform" name="contactform" class="contact-form" action="mail/contact.php">

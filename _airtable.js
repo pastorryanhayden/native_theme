@@ -59,6 +59,48 @@ var homeseries = new Airtable({ apiKey: config.apikey }).base(config.series);
 var homeseriesJson = [];
 var homeseriesJsonTest = [];
 
+var fileinfo = '_data/info.json';
+var info = new Airtable({ apiKey: config.apikey }).base(config.info);
+var infoJson = [];
+var infoJsonTest = [];
+
+var filelocation = '_data/location.json';
+var location = new Airtable({ apiKey: config.apikey }).base(config.info);
+var locationJson = [];
+var locationJsonTest = [];
+
+var filecontact = '_data/contact.json';
+var contact = new Airtable({ apiKey: config.apikey }).base(config.info);
+var contactJson = [];
+var contactJsonTest = [];
+
+var fileservice_schedule = '_data/service_schedule.json';
+var service_schedule = new Airtable({ apiKey: config.apikey }).base(config.info);
+var service_scheduleJson = [];
+var service_scheduleJsonTest = [];
+
+
+var filewelcome = '_data/welcome.json';
+var welcome = new Airtable({ apiKey: config.apikey }).base(config.welcome);
+var welcomeJson = [];
+var welcomeJsonTest = [];
+
+var filewelcome2 = '_data/welcome2.json';
+var welcome2 = new Airtable({ apiKey: config.apikey }).base(config.welcome);
+var welcome2Json = [];
+var welcome2JsonTest = [];
+
+
+var filehome = '_data/home.json';
+var home = new Airtable({ apiKey: config.apikey }).base(config.info);
+var homeJson = [];
+var homeJsonTest = [];
+
+var filecontact_page = '_data/contact_page.json';
+var contact_page = new Airtable({ apiKey: config.apikey }).base(config.contact);
+var contact_pageJson = [];
+var contact_pageJsonTest = [];
+
 
 
 var updated = false;
@@ -382,4 +424,227 @@ var updated = false;
         console.error(err)
       });
       console.log('home series worked');
+    });
+
+
+
+      // info 
+
+    info('Main_Stuff').select({
+        maxRecords: 1,
+      //Formula to how to get data
+      // help https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference
+
+    }).eachPage(function page(records, fetchNextPage) {
+
+        // This function (`page`) will get called for each page of records.
+
+        records.forEach(function(record) {
+          infoJson.push(record._rawJson.fields);
+          
+        });
+        fetchNextPage();
+
+    }, function done(error) {
+        if (error) {
+            console.log(error);
+        }
+      jsonfile.writeFile(fileinfo, infoJson, function (err) {
+        console.error(err)
+      });
+      console.log('info worked');
+    });
+
+
+// location
+
+        location('Location').select({
+        maxRecords: 1,
+      //Formula to how to get data
+      // help https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference
+
+    }).eachPage(function page(records, fetchNextPage) {
+
+        // This function (`page`) will get called for each page of records.
+
+        records.forEach(function(record) {
+          locationJson.push(record._rawJson.fields);
+          
+        });
+        fetchNextPage();
+
+    }, function done(error) {
+        if (error) {
+            console.log(error);
+        }
+      jsonfile.writeFile(filelocation, locationJson, function (err) {
+        console.error(err)
+      });
+      console.log('location worked');
+    });
+
+      // contact 
+
+    contact('Contact_Info').select({
+        maxRecords: 1,
+      //Formula to how to get data
+      // help https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference
+
+    }).eachPage(function page(records, fetchNextPage) {
+
+        // This function (`page`) will get called for each page of records.
+
+        records.forEach(function(record) {
+          contactJson.push(record._rawJson.fields);
+          
+        });
+        fetchNextPage();
+
+    }, function done(error) {
+        if (error) {
+            console.log(error);
+        }
+      jsonfile.writeFile(filecontact, contactJson, function (err) {
+        console.error(err)
+      });
+      console.log('contact worked');
+    });
+
+      // service_schedule 
+
+    service_schedule('Service_Schedule').select({
+        maxRecords: 10,
+        sort: [{field: "order", direction: "asc"}]
+      //Formula to how to get data
+      // help https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference
+
+    }).eachPage(function page(records, fetchNextPage) {
+
+        // This function (`page`) will get called for each page of records.
+
+        records.forEach(function(record) {
+          service_scheduleJson.push(record._rawJson.fields);
+          
+        });
+        fetchNextPage();
+
+    }, function done(error) {
+        if (error) {
+            console.log(error);
+        }
+      jsonfile.writeFile(fileservice_schedule, service_scheduleJson, function (err) {
+        console.error(err)
+      });
+      console.log('service_schedule worked');
+    });
+
+
+    // welcome 
+
+    welcome('Sections').select({
+        maxRecords: 10,
+        sort: [{field: "order", direction: "asc"}]
+      //Formula to how to get data
+      // help https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference
+
+    }).eachPage(function page(records, fetchNextPage) {
+
+        // This function (`page`) will get called for each page of records.
+
+        records.forEach(function(record) {
+          welcomeJson.push(record._rawJson.fields);
+          
+        });
+        fetchNextPage();
+
+    }, function done(error) {
+        if (error) {
+            console.log(error);
+        }
+      jsonfile.writeFile(filewelcome, welcomeJson, function (err) {
+        console.error(err)
+      });
+      console.log('welcome worked');
+    });
+
+
+      // welcome details
+
+    welcome2('Settings').select({
+        maxRecords: 1
+      //Formula to how to get data
+      // help https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference
+
+    }).eachPage(function page(records, fetchNextPage) {
+
+        // This function (`page`) will get called for each page of records.
+
+        records.forEach(function(record) {
+          welcome2Json.push(record._rawJson.fields);
+          
+        });
+        fetchNextPage();
+
+    }, function done(error) {
+        if (error) {
+            console.log(error);
+        }
+      jsonfile.writeFile(filewelcome2, welcome2Json, function (err) {
+        console.error(err)
+      });
+      console.log('welcome2 worked');
+    });
+
+
+      // home 
+
+    home('Home_Page').select({
+        maxRecords: 1,
+      //Formula to how to get data
+      // help https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference
+
+    }).eachPage(function page(records, fetchNextPage) {
+
+        // This function (`page`) will get called for each page of records.
+
+        records.forEach(function(record) {
+          homeJson.push(record._rawJson.fields);
+          
+        });
+        fetchNextPage();
+
+    }, function done(error) {
+        if (error) {
+            console.log(error);
+        }
+      jsonfile.writeFile(filehome, homeJson, function (err) {
+        console.error(err)
+      });
+      console.log('home worked');
+    });
+
+// contact_page Page
+        contact_page('Contact_Page').select({
+        maxRecords: 1,
+      //Formula to how to get data
+      // help https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference
+
+    }).eachPage(function page(records, fetchNextPage) {
+
+        // This function (`page`) will get called for each page of records.
+
+        records.forEach(function(record) {
+          contact_pageJson.push(record._rawJson.fields);
+          
+        });
+        fetchNextPage();
+
+    }, function done(error) {
+        if (error) {
+            console.log(error);
+        }
+      jsonfile.writeFile(filecontact_page, contact_pageJson, function (err) {
+        console.error(err)
+      });
+      console.log('contact_page worked');
     });

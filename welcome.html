@@ -8,7 +8,7 @@ layout: default
         <div class="col-md-12">
           <ol class="breadcrumb">
             <li><a href="index.html">Home</a></li>
-            <li class="active">Plan your visit</li>
+            <li class="active">Welcome</li>
           </ol>
         </div>
       </div>
@@ -20,7 +20,7 @@ layout: default
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1>Plan your visit</h1>
+          <h1>{{site.data.welcome2[0].Page_Heading}} </h1>
         </div>
       </div>
     </div>
@@ -31,27 +31,42 @@ layout: default
     <div id="content" class="content full">
       <div class="container">
         <div class="row">
+          <div class="col-sm-12 featured-image">
+              {% if  site.data.welcome2[0].Featured_Image %}
+              {% for img in site.data.welcome2[0].Featured_Image %}
+              <img src="{{img.url}}" alt="">
+              {% endfor %}
+              {% endif %}
+          </div><!--/featured-image-->
           <div class="col-md-10 col-md-offset-1">
+            {% for section in site.data.welcome %}
               <div class="content-row">
-                  <img src="http://dl.dropbox.com/u/47159282/bh3%202.jpg" alt="">
-                <h2>Visiting Our Church</h2>
-                <p>Visiting a church for the first time can be a scary experience. At Blessed Hope Baptist, we realize that and want to make you feel as much at ease as possible. At Blessed Hope Baptist, we focus on the timeless basics: worshiping God, studying God's Word, serving each other and seeking to make disciples of Jesus Christ. We think we've found something special at BHBC. It's more than a church, it's a place where we feel "at home" and we want to welcome you to experience it too.</p>
-                <img src="http://dl.dropbox.com/u/47159282/IMG_1464%202.png" alt="">
-                <p>Blessed Hope Baptist Church is physically located at 910 South 26th Street in Mount Vernon IL, directly across from the tennis courts and basketball courts on the east side of the City Park. </p>
-                <p>Our mailing address is not the same as our physciall address. Our mailing address is:</p>
-                <p>Blessed Hope Baptist Church <br>
-                P.O. Box 1684 <br>
-                Mt.Vernon IL. 62864</p>
+                <h2 style="text-align: center; margin-top: 40px;">{{section.Section_title}}</h2>
+                <div class="row">
+                  {% if section.Image %}
+                    
+                    <div class="col-md-8">
+                        {% if  section.Content %}
+                {{section.Content | markdownify }}
+                {% endif %}
+                    </div><!--/col-md-8-->
+                    <div class="col-md-4">
+                      {% for img in section.Image %}
+                         <img src="{{img.url}}" alt="" class="thumbnail">
+                         {% endfor %}
+                    </div><!--/col-md-4-->
+                  {% else %}
+                {% if  section.Content %}
+                {{section.Content | markdownify }}
+                {% endif %}
+                {% endif %}
+                </div><!--/row-->
               </div><!--/content-row-->
+              <hr>
+              {% endfor %}
+
               <div class="content-row">
-                <h2>Services</h2>
-                <p>Blessed Hope Baptist service times are:&nbsp;</p><ul><li><span>Adult Sunday School at 10:00 AM</span><span>&nbsp;</span><br></li><li><span>Morning Service at 11:00 AM</span><span>&nbsp;</span><br></li><li><span>Sunday evening at 6:00 PM</span><span>&nbsp;</span><br></li><li><span>Wednesday evening at 6:00 PM.</span><br></li></ul><p>Services at Blessed Hope Baptist are   traditional, but not in a stiff or formal way. There is no dress code   for our services, and many people dress in both traditional church   attire and more casual clothes. We try to keep the services as simple as   possible, singing hymns (both old and new), receiving an offering, and   hearing a Bible message. Each service lasts one   hour. </p>
-               
-              </div><!--/content-row-->
-              <div class="content-row">
-                   <img src="http://dl.dropbox.com/u/47159282/IMG_1473%202-1.png" alt="">
-                <h2>Kids</h2>
-                <p>At BHBC, we think kids should experience church as much as possible. In the average church today parents and children no longer sit together and are seperated from each other for the duration of the services. While we do have children specific activities, BHBC serves, worships and learns together as children remain in all services with the adults. Pastor Hicks has a way of teaching and preaching so that all are able to understand and learn. Regardless of age and whether you are a seasoned Bible student or new to learning the Word of God, all are able to be fed at Blessed Hope Baptist Church. </p>
+                   {{ site.data.location[0].Google_Maps_Embed_Code | raw }}
               </div><!--/content-row-->
             </div>
             </div>

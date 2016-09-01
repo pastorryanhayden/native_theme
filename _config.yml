@@ -9,7 +9,7 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 # Change this to the domain when you are finished and ready to publish.
 
-url: "http://blessedhopemtvernon.org/" # the base hostname & protocol for your site | Switch to http://cranesvillebiblechurch.com/" Before running Glynn.  Afterwards change it back to http://localhost:4000/
+url: "http://localhost:3000/" # the base hostname & protocol for your site | Switch to http://cranesvillebiblechurch.com/" Before running Glynn.  Afterwards change it back to http://localhost:4000/
 
 # This is the path to the default images.  If you add different default images you can change them here.
 default_header_image: "assets/default_header.jpg"
@@ -23,14 +23,17 @@ default_calendar_image: "assets/calendar_default.jpg"
 # Airtable API Stuff
 airtable:
   apikey: "keyRTLlrVS02vC3Vx"
-  blog: "appemSttDE2EUGHNP"
-  sermons: "appl2J04KN22eh0kq"
-  series: "appl2J04KN22eh0kq"
-  ministries: "appBazeS8w7bw20Sr"
-  photos: "appBazeS8w7bw20Sr"
-  events: "appBazeS8w7bw20Sr"
-  abouts: "appRsaYmgnz7KU4Aw"
-  slider: "appWZ0YP8YOWeM9AB"
+  blog: "appACbXiUkUT1U016"
+  sermons: "app6SdRlqjbQm06Qt"
+  series: "app6SdRlqjbQm06Qt"
+  ministries: "appOQzne2MxFg9pM5"
+  photos: "appOQzne2MxFg9pM5"
+  events: "appOQzne2MxFg9pM5"
+  abouts: "app9qZCQnCyJeurBh"
+  slider: "appLYLHvndyaKqm7l"
+  welcome: "appXyWFyYs21QVkeV"
+  info: "app1GAJw5K0tTQINQ"
+  contact: "appioRCiUVj0Tcg4M"
 
 # LEAVE EVERYTHING ELSE ALONE!!
 

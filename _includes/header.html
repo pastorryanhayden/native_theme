@@ -10,7 +10,14 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-8">
-            <h1 class="logo"> <a href="{{site.url}}/"><img src="{{site.url}}assets/images/logo2.png" alt="Logo"></a> </h1>
+             {% if  {{site.data.info[0].Church_Logo %}
+          {% for img in site.data.info[0].Church_Logo %}
+          <h1 class="logo"> <a href="{{site.url}}/"><img src="{{site.url}}assets/images/logo2.png" alt="Logo"></a> </h1>
+          {% endfor %}
+          {% else %}
+          <h1 class="logo"> <a href="{{site.url}}/">{{site.data.info[0].Church_Name}}</a> </h1>
+          <h5></h5>
+          {% endif %}
           </div>
           <div class="col-md-8 col-sm-6 col-xs-4">
             <ul class="top-navigation hidden-sm hidden-xs">
@@ -35,22 +42,27 @@
                               <li>
                                 <div class="megamenu-container container">
                                   <div class="row">
-                                    <div class="col-md-4 hidden-sm hidden-xs"> <span class="megamenu-sub-title"><i class="fa fa-bell"></i> Welcome Video</span>
-
-                                    </div>
-                                    <div class="col-md-4"> <span class="megamenu-sub-title"><i class="fa fa-pagelines"></i> Essential Information</span>
+                                    <div class="col-md-5"> <span class="megamenu-sub-title"><i class="fa fa-pagelines"></i> Essential Information</span>
                                       <ul class="sub-menu">
                                         {% for item in site.data.abouts %}
                                      <li><a href="{{ item.title | datapage_url: 'about-us' | prepend: site.baseurl | prepend: site.url }}">{{item.title}}</a></li>
                                      {% endfor %}
                                       </ul>
                                     </div>
+                                    <div class="col-md-4"> <span class="megamenu-sub-title"><i class="fa fa-clock-o"></i> Contact Info</span>
+                                       <ul>
+           <li><i class="fa fa-map-marker"></i>  {{site.data.location[0].Street_Address}} {{site.data.location[0].Street_Address2}} {{site.data.location[0].City }}, {{site.data.location[0].State }} {{site.data.location[0].Zip }} </li>
+                <li><i class="fa fa-phone"></i>  {{site.data.contact[0].Phone }} </li>
+                <li>
+                <i class="fa fa-envelope"></i>  {{site.data.contact[0].Church_email }} 
+                </li>
+              </ul>
+                                    </div>
                                     <div class="col-md-3"> <span class="megamenu-sub-title"><i class="fa fa-clock-o"></i> Service Schedule</span>
                                       <ul class="sub-menu">
-                                        <li><a href="#">Sunday School</a> <span class="meta-data">Sunday | 10:00 AM</span> </li>
-                                        <li><a href="#">Morning Service</a> <span class="meta-data">Sunday | 11:00 AM</span> </li>
-                                        <li><a href="#">Sunday Evening</a> <span class="meta-data">Sunday | 06:00 PM</span> </li>
-                                        <li><a href="#">Wednesday Night</a> <span class="meta-data">Wednesday | 06:00 PM</span> </li>
+                                        {% for item in site.data.service_schedule %}
+            <li><a href="#">{{item.Service_name}}</a> <span class="meta-data">{{item.Service_time}}</span> </li>
+            {% endfor %}
 
                                       </ul>
                                     </div>
@@ -74,7 +86,7 @@
                     <li><a href="{{site.url}}gallery.html">Gallery</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="{{site.url}}contact.html">Contact Us</a></li>
               </ul>
             </nav>
           </div>
