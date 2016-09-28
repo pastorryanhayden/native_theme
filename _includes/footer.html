@@ -5,10 +5,8 @@
         <!-- Start Footer Widgets -->
         <div class="col-md-4 col-sm-4 widget footer-widget">
           <h4 class="footer-widget-title">About our Church</h4>
-          {% if  {{site.data.info[0].Church_Logo %}
-          {% for img in site.data.info[0].Church_Logo %}
-          <img src="{{img.url}}" alt="Logo">
-          {% endfor %}
+          {% if  site.data.info[0].Church_Logo_Dark %}
+          <img src="{{site.data.info[0].Church_Logo_Dark[0].url}}" alt="Logo">
           {% else %}
           <h5>{{site.data.info[0].Church_Name}}</h5>
           {% endif %}

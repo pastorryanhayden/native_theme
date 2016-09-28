@@ -126,11 +126,11 @@ var updated = false;
 
 // // Tested and if updated or created build json and record to file
 // if(updated) {
-    abouts('Pages').select({
+    abouts('Other Pages').select({
         maxRecords: 100,
       //sort
-        sort: [{field: "title", direction: "asc"}],
-        filterByFormula: "TRUE(published)",
+        view: "Main View",
+        filterByFormula: "published",
       //Formula to how to get data
       // help https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference
 
@@ -514,7 +514,7 @@ var updated = false;
 
     service_schedule('Service_Schedule').select({
         maxRecords: 10,
-        sort: [{field: "order", direction: "asc"}]
+        view: "Main View"
       //Formula to how to get data
       // help https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference
 
@@ -543,7 +543,7 @@ var updated = false;
 
     welcome('Sections').select({
         maxRecords: 10,
-        sort: [{field: "order", direction: "asc"}]
+        view: "Main View"
       //Formula to how to get data
       // help https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference
 
