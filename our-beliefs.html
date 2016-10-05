@@ -1,0 +1,48 @@
+---
+layout: default
+---
+<!-- Start Page Header -->
+    <div class="page-header parallax clearfix">
+        <div class="title-subtitle-holder">
+        	<div class="title-subtitle-holder-inner">
+    			<h2>Our Beliefs</h2>
+        	</div>
+        </div>
+    </div>
+    <!-- End Page Header -->
+    <!-- Breadcrumbs -->
+    <div class="lgray-bg breadcrumb-cont">
+    	<div class="container">
+          	<ol class="breadcrumb">
+            	<li><a href="{{site.url}}index.html">Home</a></li>
+              <li><a href="#">About Us</a></li>
+            	<li class="active">Our Beliefs</li>
+          	</ol>
+        </div>
+    </div>
+    <!-- Start Body Content -->
+  <!-- Start Content -->
+  <div class="main" role="main">
+    <div id="content" class="content full">
+      <div class="container">
+        <div class="row">
+        
+          {% for item in site.data.beliefs %}
+          <div class="belief col-sm-12 col-md-10 col-md-offset-1">
+            <div class="panel panel-default ">
+             <div class="panel-heading"><h3><i class="fa {{item.icon}}"></i> {{item.title}}</h3></div><!--/panel-heading-->
+             <div class="panel-body">
+          {% if item.Content %}
+            {{item.Content | markdownify}}
+           {% endif %}
+           </div><!--/panel-body-->
+           </div><!--panel-->
+        </div><!--/belief-->
+       {% endfor %}
+          
+          
+          
+        </div><!--/row-->
+      </div><!--/container-->
+    </div><!--/content full-->
+  </div><!--/main-->

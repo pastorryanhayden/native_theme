@@ -1,0 +1,41 @@
+---
+layout: default
+---
+<!-- Start Page Header -->
+    <div class="page-header parallax clearfix"  {% if site.data.gospel[0].Featured_Image %}style="background-image:url({{site.data.gospel[0].Featured_Image[0].url}});"{% endif %}>
+        <div class="title-subtitle-holder">
+        	<div class="title-subtitle-holder-inner">
+    			<h2>{{site.data.gospel[0].Heading}}</h2>
+        	</div>
+        </div>
+    </div>
+    <!-- End Page Header -->
+    <!-- Breadcrumbs -->
+    <div class="lgray-bg breadcrumb-cont">
+    	<div class="container">
+          	<ol class="breadcrumb">
+            	<li><a href="{{site.url}}index.html">Home</a></li>
+              <li><a href="#">About Us</a></li>
+            	<li class="active">The Gospel</li>
+          	</ol>
+        </div>
+    </div>
+    <!-- Start Body Content -->
+  <div class="main" role="main">
+    <div id="content" class="content full">
+      <div class="container">
+        <div class="row">
+
+          <article class="col-sm-12 col-md-10 col-md-offset-1">
+
+            {% if site.data.gospel[0].Content %}
+            {{site.data.gospel[0].Content | markdownify }}
+            {% endif %}
+         </article>
+          
+          
+          
+        </div><!--/row-->
+      </div><!--/container-->
+    </div><!--/content full-->
+  </div><!--/main-->

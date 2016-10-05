@@ -1,0 +1,106 @@
+---
+layout: default
+---
+<style>
+.staff-content img {
+    margin: 20px;
+}
+</style>
+  <!-- Start Page Header -->
+    <div class="page-header parallax clearfix">
+        <div class="title-subtitle-holder">
+        	<div class="title-subtitle-holder-inner">
+    			<h2>Our Leadership</h2>
+        	</div>
+        </div>
+    </div>
+    <!-- End Page Header -->
+    <!-- Breadcrumbs -->
+    <div class="lgray-bg breadcrumb-cont">
+    	<div class="container">
+          	<ol class="breadcrumb">
+            	<li><a href="{{site.url}}index.html">Home</a></li>
+              <li><a href="#">About Us</a></li>
+            	<li class="active">Our Leadership</li>
+          	</ol>
+        </div>
+    </div>
+  <!-- Start Content -->
+  <!-- Start Body Content -->
+  	<div class="main" role="main">
+    	<div id="content" class="content full">
+    		<div class="container">
+               <div class="row">
+                <div class="col-md-12">
+                <h3>Our Pastor</h3>
+              	<hr class="sm">
+                  {% for leader in site.data.leadership %}
+        {% if  leader.Is_Senior_Pastor %}
+        <div class="col-sm-12 col-md-12" >
+           <div class="grid-item staff-item format-standard">
+                        	<div class="grid-item-inner">
+                                <img src="{{leader.Photo[0].url}}" alt="" style="margin-left: auto; margin-right: auto; display: block;">
+                          		<div class="grid-content">
+                                	<div class="staff-item-name">
+                            			<h5>{{ leader.Leader_Name }}</h5>
+                                        <span class="meta-data">{{leader.Position}}</span>
+                                    </div>
+                                    <ul class="social-icons-colored">
+                                        <li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                        <li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                        <li class="gmail"><a href="https://plus.google.com/"><i class="fa fa-envelope"></i></a></li>
+                                    </ul>
+                            		<div style="text-align: left; max-width: 850px;margin-left: auto; margin-right: auto;">{% if  leader.Content %}
+                  {{leader.Content | markdownify }}
+                  {% endif %}</div>
+                          		</div><!--/grid-content-->
+                        	</div><!--grid-item-inner-->
+                      	</div><!--staff-item-->
+          </div>
+          
+          
+                      	
+                    
+
+
+        {% endif %}
+        {% endfor %}
+          <h3>Staff and Leadership</h3>
+              	<hr class="sm">
+                 <div class="row">
+        {% for leader in site.data.leadership %}
+        {% unless  leader.Is_Senior_Pastor %}
+        <div class="col-md-3 col-sm-6" style="height: 600px;">
+                      	<div class="grid-item staff-item format-standard">
+                        	<div class="grid-item-inner">
+                                {% if leader.Photo %}
+                                <img src="{{leader.Photo[0].thumbnails.large.url}}" alt="" style="width: 100%">
+                                {% else %}
+                                <img src="http://vignette2.wikia.nocookie.net/naginoasukara/images/8/86/Placeholder_person.png/revision/latest?cb=20130924151342" alt="" width="100%">
+                                {% endif %}
+                          		<div class="grid-content">
+                                	<div class="staff-item-name">
+                            			<h5>{{ leader.Leader_Name }}</h5>
+                                        <span class="meta-data">{{leader.Position}}</span>
+                                    </div>
+                                    <ul class="social-icons-colored">
+                                        <li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                        <li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                        <li class="gmail"><a href="https://plus.google.com/"><i class="fa fa-envelope"></i></a></li>
+                                    </ul>
+                            	<div style="text-align: left; max-width: 850px;margin-left: auto; margin-right: auto;">{% if  leader.Content %}
+                  {{leader.Content | truncatewords: 50 | markdownify }}
+                  {% endif %}</div>
+                          		</div><!--/grid-content-->
+                        	</div><!--grid-item-inner-->
+                      	</div><!--staff-item-->
+                    </div><!--/col-->
+        {% endunless %}
+        {% endfor %}
+          </div><!--/row-->
+                </div><!--/col-md-12-->
+               </div><!--/row-->
+        </div><!--/container-->
+   	</div><!--#content-->
+    <!-- End Body Content -->
+  
